@@ -45,12 +45,12 @@
                 aria-expanded="false"
               >
               </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Delhi</a></li>
-                <li><a class="dropdown-item" href="#">Seattle</a></li>
+              <ul class="dropdown-menu cityDropdown">
+                <li><a class="dropdown-item d">Delhi</a></li>
+                <li><a class="dropdown-item d">Seattle</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="#">Bangalore</a>
+                  <a class="dropdown-item d">Bangalore</a>
                 </li>
               </ul>
             </li>
@@ -64,8 +64,9 @@
               type="search"
               placeholder="Search"
               aria-label="Search"
+              id="city"
             />
-            <button class="btn btn-outline-success" type="submit">
+            <button class="btn btn-outline-success" type="submit" id="search">
               Search
             </button>
           </form>
@@ -73,51 +74,30 @@
       </div>
     </nav>
     <div class="container">
-      <h1 class="my-4 text-center">Weather for Delhi</h1>
+      <h1 class="my-4 text-center">
+        Weather for <span id="cityName">Delhi</span>
+      </h1>
       <main>
-        <div
-          class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
           <div class="col">
-            <div class="card mb-4 rounded-3 shadow-sm">
-              <div class="card-header py-3">
-                <h4 class="my-0 fw-normal">Free</h4>
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <div class="card-header py-3 text-bg-primary border-primary">
+                <h4 class="my-0 fw-normal">Feels Like</h4>
               </div>
               <div class="card-body">
                 <h1 class="card-title pricing-card-title">
-                  $0<small class="text-muted fw-light">/mo</small>
+                  <span id="feels_like_main"></span
+                  ><small class="text-muted fw-light"> &deg;F</small>
                 </h1>
                 <ul class="list-unstyled mt-3 mb-4">
-                  <li>10 users included</li>
-                  <li>2 GB of storage</li>
-                  <li>Email support</li>
-                  <li>Help center access</li>
+                  <li>Feels Like <span id="feels_like"></span></li>
+                  <li>Humidity <span id="humidity"></span></li>
                 </ul>
                 <button
                   type="button"
                   class="w-100 btn btn-lg btn-outline-primary"
                 >
-                  Sign up for free
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card mb-4 rounded-3 shadow-sm">
-              <div class="card-header py-3">
-                <h4 class="my-0 fw-normal">Pro</h4>
-              </div>
-              <div class="card-body">
-                <h1 class="card-title pricing-card-title">
-                  $15<small class="text-muted fw-light">/mo</small>
-                </h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                  <li>20 users included</li>
-                  <li>10 GB of storage</li>
-                  <li>Priority email support</li>
-                  <li>Help center access</li>
-                </ul>
-                <button type="button" class="w-100 btn btn-lg btn-primary">
-                  Get started
+                  Check It
                 </button>
               </div>
             </div>
@@ -125,20 +105,45 @@
           <div class="col">
             <div class="card mb-4 rounded-3 shadow-sm border-primary">
               <div class="card-header py-3 text-bg-primary border-primary">
-                <h4 class="my-0 fw-normal">Enterprise</h4>
+                <h4 class="my-0 fw-normal">Pressure</h4>
               </div>
               <div class="card-body">
                 <h1 class="card-title pricing-card-title">
-                  $29<small class="text-muted fw-light">/mo</small>
+                  <span id="pressure_main"></span
+                  ><small class="text-muted fw-light"> hPa</small>
                 </h1>
                 <ul class="list-unstyled mt-3 mb-4">
-                  <li>30 users included</li>
-                  <li>15 GB of storage</li>
-                  <li>Phone and email support</li>
-                  <li>Help center access</li>
+                  <li>Pressure <span id="pressure"></span></li>
+                  <li>Temperature <span id="temp"></span></li>
                 </ul>
-                <button type="button" class="w-100 btn btn-lg btn-primary">
-                  Contact us
+                <button
+                  type="button"
+                  class="w-100 btn btn-lg btn-outline-primary"
+                >
+                  Check It
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <div class="card-header py-3 text-bg-primary border-primary">
+                <h4 class="my-0 fw-normal">Temperature</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">
+                  <span id="temp_main"></span
+                  ><small class="text-muted fw-light"> &deg;F</small>
+                </h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>Maximum Temperature <span id="temp_max"></span></li>
+                  <li>Minimum Temperature <span id="temp_min"></span></li>
+                </ul>
+                <button
+                  type="button"
+                  class="w-100 btn btn-lg btn-outline-primary"
+                >
+                  Check It
                 </button>
               </div>
             </div>
@@ -153,8 +158,8 @@
               <tr>
                 <th style="width: 20%"></th>
                 <th style="width: 10%">Feels_like</th>
-                <th style="width: 10%">Humidity</th>
                 <th style="width: 10%">Pressure</th>
+                <th style="width: 10%">Humidity</th>
                 <th style="width: 10%">Temp</th>
                 <th style="width: 10%">Temp_max</th>
                 <th style="width: 10%">Temp_min</th>
@@ -162,61 +167,58 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row" class="text-start">Lucknow</th>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
+                <th scope="row" class="text-start Lucknow">Lucknow</th>
+                <td id="lucknow_feels_like"></td>
+                <td id="lucknow_humidity"></td>
+                <td id="lucknow_pressure"></td>
+                <td id="lucknow_temp"></td>
+                <td id="lucknow_temp_max"></td>
+                <td id="lucknow_temp_min"></td>
               </tr>
               <tr>
-                <th scope="row" class="text-start">Chandigarh</th>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-              </tr>
-            </tbody>
-
-            <tbody>
-              <tr>
-                <th scope="row" class="text-start">Bangalore</th>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
+                <th scope="row" class="text-start Chandigarh">Chandigarh</th>
+                <td id="chandigarh_feels_like"></td>
+                <td id="chandigarh_humidity"></td>
+                <td id="chandigarh_pressure"></td>
+                <td id="chandigarh_temp"></td>
+                <td id="chandigarh_temp_max"></td>
+                <td id="chandigarh_temp_min"></td>
               </tr>
               <tr>
-                <th scope="row" class="text-start">Pune</th>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
+                <th scope="row" class="text-start Banglore">Bangalore</th>
+                <td id="bangalore_feels_like"></td>
+                <td id="bangalore_humidity"></td>
+                <td id="bangalore_pressure"></td>
+                <td id="bangalore_temp"></td>
+                <td id="bangalore_temp_max"></td>
+                <td id="bangalore_temp_min"></td>
               </tr>
               <tr>
-                <th scope="row" class="text-start">Yamunanagar</th>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
+                <th scope="row" class="text-start Pune">Pune</th>
+                <td id="pune_feels_like"></td>
+                <td id="pune_humidity"></td>
+                <td id="pune_pressure"></td>
+                <td id="pune_temp"></td>
+                <td id="pune_temp_max"></td>
+                <td id="pune_temp_min"></td>
               </tr>
               <tr>
-                <th scope="row" class="text-start">Phagwara</th>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
+                <th scope="row" class="text-start Yamunanagar">Yamunanagar</th>
+                <td id="yamunanagar_feels_like"></td>
+                <td id="yamunanagar_humidity"></td>
+                <td id="yamunanagar_pressure"></td>
+                <td id="yamunanagar_temp"></td>
+                <td id="yamunanagar_temp_max"></td>
+                <td id="yamunanagar_temp_min"></td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start Phagwara">Phagwara</th>
+                <td id="phagwara_feels_like"></td>
+                <td id="phagwara_humidity"></td>
+                <td id="phagwara_pressure"></td>
+                <td id="phagwara_temp"></td>
+                <td id="phagwara_temp_max"></td>
+                <td id="phagwara_temp_min"></td>
               </tr>
             </tbody>
           </table>
